@@ -1,0 +1,5 @@
+(library
+ (name reason_react_ppx)
+ (kind ppx_rewriter)
+ (flags :standard -w -9)
+ (libraries ppxlib))

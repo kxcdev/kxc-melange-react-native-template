@@ -1,0 +1,4 @@
+;; file: <projroot>/dune
+
+(vendored_dirs vendors)
+(dirs :standard)

@@ -1,0 +1,53 @@
+# Licensing Notices
+
+All files containing source code and/or documentations that are
+directly included in this software distribution, with the exceptions
+of files that are under the vendors/ directory and the files described
+in following sections of this file, are licensed under the Apache
+License, Version 2.0 (the "License") by the copyright holder(s) listed
+below; you may not use this file except in compliance with the
+License. You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0. Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License.
+
+Copyright 2022-2023 Kotoi-Xie Consultancy, Inc.
+
+## melange-re (https://github.com/melange-re/melange)
+
+This section of licensing notice applies to the following files within
+this software distribution:
+- vendors/reason-react-ppx/reactjs_jsx_ppx.ml
+
+The aforementioned file(s) is/are licensed under the terms of the GNU
+General Public License. See COPYING.LESSER for more information.
+
+Copyright (C) 2015-2016 Bloomberg Finance L.P.
+Copyright (C) 2017- Hongbo Zhang 
+Copyright (C) 2022- Antonio Nuno Monteiro (?)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+In addition to the permissions granted to you by the LGPL, you may combine
+or link a "work that uses the Library" with a publicly distributed version
+of this file to produce a combined library or application, then distribute
+that combined work under the terms of your choosing, with no requirement
+to comply with the obligations normally placed on you by section 4 of the
+LGPL version 3 (or the corresponding section of a later version of the LGPL
+should you choose to use a later version).
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
