@@ -292,7 +292,7 @@ let rec recursivelyMakeNamedArgsForExternal list args =
   | [] -> args
   [@@raises Invalid_argument]
 
-(* Build an AST node for the [@bs.obj] representing props for a component *)
+(* Build an AST node for the [@mel.obj] representing props for a component *)
 let makePropsValue fnName loc namedArgListWithKeyAndRef propsType =
   let propsName = fnName ^ "Props" in
   {
@@ -311,7 +311,7 @@ let makePropsValue fnName loc namedArgListWithKeyAndRef propsType =
     pval_attributes =
       [
         {
-          attr_name = { txt = "bs.obj"; loc };
+          attr_name = { txt = "mel.obj"; loc };
           attr_payload = PStr [];
           attr_loc = loc;
         };
@@ -320,7 +320,7 @@ let makePropsValue fnName loc namedArgListWithKeyAndRef propsType =
   }
   [@@raises Invalid_argument]
 
-(* Build an AST node representing an `external` with the definition of the [@bs.obj] *)
+(* Build an AST node representing an `external` with the definition of the [@mel.obj] *)
 let makePropsExternal fnName loc namedArgListWithKeyAndRef propsType =
   {
     pstr_loc = loc;
