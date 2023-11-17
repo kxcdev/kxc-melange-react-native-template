@@ -1,0 +1,10 @@
+(melange.emit
+ (target output)
+ (libraries
+   reason-react kxclib.melange
+
+   kxc_melange_react_helpers
+   kxc_melange_react_native_helpers
+ )
+ (preprocess
+  (pps melange.ppx reason_react_ppx)))

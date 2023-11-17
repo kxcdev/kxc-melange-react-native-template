@@ -1,0 +1,7 @@
+(library
+ (name kxc_melange_react_native_helpers)
+ (wrapped false)
+ (libraries kxc_melange_react_helpers)
+ (preprocess
+  (pps melange.ppx reason_react_ppx))
+ (modes melange))

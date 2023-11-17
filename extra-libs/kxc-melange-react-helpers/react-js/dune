@@ -1,0 +1,7 @@
+(library
+ (name kxc_melange_react_helpers)
+ (wrapped false)
+ (libraries reason-react kxclib.melange)
+ (preprocess
+  (pps melange.ppx reason_react_ppx))
+ (modes melange))
