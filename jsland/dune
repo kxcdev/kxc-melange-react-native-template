@@ -1,0 +1,3 @@
+;; file: <projroot>/jsland/dune
+
+(dirs .)
