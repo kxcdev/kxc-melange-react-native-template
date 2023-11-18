@@ -7,6 +7,8 @@ Be aware that this is a preliminary template / sample project and things are not
 
 ## Teaser
 
+(BTW: Android APK is available at the [GitHub release page (tag: v0-bc46w6a)](https://github.com/kxcdev/kxc-melange-react-native-template/releases/tag/v0-bc46w6a))
+
 this silly game:
 
 ![Teaser - Accumulator Example](./docs/images/teaser-accumulator-43.png "Accumulator Example Teaser")
