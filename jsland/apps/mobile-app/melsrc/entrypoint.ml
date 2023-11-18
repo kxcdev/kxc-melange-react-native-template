@@ -3,6 +3,8 @@ open Kxc_react_native_helpers
 
 let step1_title = "The first step"
 
+let ocaml_version = Sys.ocaml_version
+
 module Guikit = struct
   include ReactNative
   let button ?key ?onPress title = button () ?key ?onPress ~title
@@ -36,7 +38,7 @@ module OCaml_section = struct
           "Hello from %s coded using OCaml (more specifically Melange)!"
           os_str;
       line_break ();
-      hview ~style:["gap", `int 6; "padding", `int 4] [
+      hview ~style:["gap", `int 6; "paddingVertical", `int 4] [
           button "Bump"
             ~onPress:(fun() ->
               updateCounter succ;

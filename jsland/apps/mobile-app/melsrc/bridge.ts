@@ -1,6 +1,9 @@
 import { FunctionComponent } from "react";
 
-export { step1_title } from "./output/jsland/apps/mobile-app/melsrc/entrypoint";
+export {
+  step1_title,
+  ocaml_version,
+} from "./output/jsland/apps/mobile-app/melsrc/entrypoint";
 import * as entrypoint from "./output/jsland/apps/mobile-app/melsrc/entrypoint";
 
 export const OCamlSection = {

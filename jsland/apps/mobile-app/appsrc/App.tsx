@@ -21,10 +21,11 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
+
+import IntroHeader from "./components/IntroHeader";
 
 import * as MelangeBridged from "../melsrc/bridge";
 
@@ -114,15 +115,21 @@ function App(): JSX.Element {
             title=" >> Accumulator Example << "
             onPress={() => setScreenSelection("accumulator")}
           />
-          <Header />
+          <IntroHeader />
           <View
             style={{
               backgroundColor: isDarkMode ? Colors.black : Colors.white,
             }}
           >
             <Section title={MelangeBridged.step1_title}>
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
+              Edit <Text style={styles.highlight}>appsrc/App.tsx</Text> to
+              change this screen and then come back to see your edits.
+              {"\n\n"}
+              Code written in OCaml (Melange) code is imported at
+              <Text style={styles.highlight}>
+                melsrc/entrypoint.ml
+              </Text> via <Text style={styles.highlight}>melsrc/bridge.ts</Text>
+              .
             </Section>
             <Section title={camlsec.sectionTitle}>
               <camlsec.Body initialCounterValue={1} />
