@@ -1,8 +1,6 @@
 open Kxc_react_helpers
 open Kxc_react_native_helpers
 
-module Rn = ReactNative
-
 let step1_title = "The first step"
 
 module Imported = struct
