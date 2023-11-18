@@ -124,7 +124,17 @@ module Rd (* short for ReactDom *) = struct
   let sty = ReactDOMStyle.make
 
   let str = React.string
+
   let elems es = es |> Belt.List.toArray |> React.array
+
+  external fragment :
+    ?children:React.element
+    -> unit
+    -> React.element
+    = "Fragment" [@@mel.module "react"]
+  [@@react.component]
+
+
   let elp tag props children =
     ReactDOM.createDOMElementVariadic tag ~props (Array.of_list children)
   let elp' tag props children =

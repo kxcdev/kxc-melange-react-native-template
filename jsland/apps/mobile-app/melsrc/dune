@@ -3,9 +3,11 @@
 (melange.emit
  (target output)
  (promote (until-clean))
- (libraries reason-react kxclib.melange)
+ (libraries
+   reason-react kxclib.melange
+   kxc_melange_react_native_helpers
+ )
  (preprocess
-  (pps melange.ppx
-       reason_react_ppx
-  ))
+  (pps melange.ppx reason_react_ppx))
+ (compile_flags :standard -open Kxclib_melange)
  (module_systems es6))

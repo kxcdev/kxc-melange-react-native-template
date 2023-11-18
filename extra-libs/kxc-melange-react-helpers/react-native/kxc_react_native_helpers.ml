@@ -3,6 +3,9 @@ open Kxc_react_helpers
 
 module ReactNative = struct
 
+  let elems = Rd.elems
+  let fragment = Rd.fragment
+
   external view :
     ?style:polydict
     -> ?children:React.element
@@ -19,9 +22,12 @@ module ReactNative = struct
     = "Text" [@@mel.module "react-native"]
   [@@react.component]
 
+  let text_str ?style str =
+    text ?style &! Rd.str str
+
   external button :
     title:string
-    -> onPress:(_ -> unit)
+    -> ?onPress:(_ -> unit)
     -> unit
     -> React.element
     = "Button" [@@mel.module "react-native"]
