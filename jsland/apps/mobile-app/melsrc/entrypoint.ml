@@ -74,6 +74,9 @@ module Accumulator_example = struct
         "textAlign", `string "center";
         "fontSize", `int 22;
       ]
+    let button : polydict' = [
+        "flexGrow", `int 1;
+      ]
     let prompt ~bingo : polydict' = [
         "textAlign", `string "center";
         "marginBottom", `int 10;
@@ -105,18 +108,18 @@ module Accumulator_example = struct
        in
        let button' ?key ?onPress title =
          button title ?key ?onPress
-         >! view ~style:[ "flexGrow", `int 1 ] in
+         >! view ~style:Style.button in
        let row ?key elems = hview elems ?key ~style:Style.row in
-       let action_button_row from =
+       let row_of_action_buttons from : int -> React.element =
          (iotaf &&> row) &
            ((+) from) &>
              fun x ->
              sprintf " %s%d" mode_indicator x
              |> button' ~onPress:(fun () -> updateAccumulator (mode_effect x))
        in
-       ([ action_button_row 1 3;
-          action_button_row 4 3;
-          action_button_row 7 3;
+       ([ row_of_action_buttons 1 3;
+          row_of_action_buttons 4 3;
+          row_of_action_buttons 7 3;
           row [
               button' "MOD" ~onPress:(fun () ->
                   updateMode flip_mode);

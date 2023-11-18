@@ -5,11 +5,11 @@ mobile application projects.
 
 Be aware that this is a preliminary template / sample project and things are not guaranteed to work.
 
-## Teaser
+## The Teaser
 
 (BTW: Android APK is available at the [GitHub release page (tag: v0-bc46w6a)](https://github.com/kxcdev/kxc-melange-react-native-template/releases/tag/v0-bc46w6a))
 
-this silly game:
+this rather silly game:
 
 ![Teaser - Accumulator Example](./docs/images/teaser-accumulator-43.png "Accumulator Example Teaser")
 
@@ -31,18 +31,18 @@ can be implemented with the following OCaml code (in `module Accumulator_example
        in
        let button' ?key ?onPress title =
          button title ?key ?onPress
-         >! view ~style:[ "flexGrow", `int 1 ] in
+         >! view ~style:Style.button in
        let row ?key elems = hview elems ?key ~style:Style.row in
-       let action_button_row from =
+       let row_of_action_buttons from : int -> React.element =
          (iotaf &&> row) &
            ((+) from) &>
              fun x ->
              sprintf " %s%d" mode_indicator x
              |> button' ~onPress:(fun () -> updateAccumulator (mode_effect x))
        in
-       ([ action_button_row 1 3;
-          action_button_row 4 3;
-          action_button_row 7 3;
+       ([ row_of_action_buttons 1 3;
+          row_of_action_buttons 4 3;
+          row_of_action_buttons 7 3;
           row [
               button' "MOD" ~onPress:(fun () ->
                   updateMode flip_mode);
@@ -60,6 +60,16 @@ can be implemented with the following OCaml code (in `module Accumulator_example
      ])
      |> view ~style:Style.container)
 ```
+
+you probably want to know about the following combinators which are not entirely standard (most of them are defined in [kxclib](https://kxc.dev/kxclib-ocaml)):
+- `val (&) : ('a -> 'b) -> 'a -> 'b` - in the same spirit of Haskel's `$`, to reduce parentheses
+- `val (&>) : ('x -> 'y) -> ('y -> 'z) -> ('x -> 'z)` - "backward" function composition
+- `val (&&>) : ('x -> 'y -> 'z) -> ('z -> 'r) -> ('x -> 'y -> 'r)` - "backward" function composition for functions taking two arguments
+- `val iotaf : (int -> 'a) -> int -> 'a list` - `iotaf f n` generates a list of `[0; ..; n-1]` then map it with `f`
+- `let (>!) : 'a -> ('a list -> 'b) -> 'b = fun x f -> f [x]` - piping a value as a the only element to a function that expects a list as argument; analogy of `val (|>) : 'a -> ('a -> 'b) -> 'b`
+
+can you make sense of it without first playing the game or looking at
+the code dependencies (e.g. stuff that might have been in `Guikit`)?
 
 ## Get Started
 ```bash
@@ -83,22 +93,20 @@ opam switch # tested on: compiler = ocaml-base-compiler.5.1.0,ocaml-options-vani
 # to confirm OCaml version, you can use
 ocamlc --version # tested on: 5.1.0
 
-## after dev setup, firstly do a preliminary build:
+## after dev setup, firstly do a warm-up build:
 dune build
 (cd jsland && yarn && yarn build)
 
-## if the above succeeds, start build & packaging servers
-(cd jsland && yarn start-metro) # or with another terminal
-(cd jsland && yarn dev) & # or with another terminal
+## after the above succeed, you can start the dev building & packaging servers with
+(cd jsland && yarn start-metro) &  # or run without the trailing '&' in another terminal
+(cd jsland && yarn dev) &          # or run without the trailing '&' in another terminal
 
 ## you can now build, install, and start the Android app with
 (cd jsland && yarn start-android)
-
-## you can now build, install, and start the iOS app on a simulator with
+## you can also now build, install, and start the iOS app on a simulator with
 (cd jsland && yarn start-ios-sim-iphone15)
-
-## to run the iOS app on a real device, you will need to open the Xcode project.
-## you can get instructions with
+## or, to run the iOS app on a real device: open the Xcode project and proceed in Xcode
+## more instructions are available with
 (cd jsland && yarn start-ios-device)
 ```
 
