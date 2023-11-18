@@ -7,7 +7,18 @@ let ocaml_version = Sys.ocaml_version
 
 module Guikit = struct
   include ReactNative
-  let button ?key ?onPress title = button () ?key ?onPress ~title
+
+  module Mobile_app_ui = struct
+    external button :
+      title:string
+      -> ?onPress:(_ -> unit)
+      -> unit
+      -> React.element
+      = "Button" [@@mel.module "mobile-app-ui"]
+    [@@react.component]
+  end
+
+  let button ?key ?onPress title = Mobile_app_ui.button () ?key ?onPress ~title
   let text_str ?key ?style str = text_str str ?key ?style:(style >? polydict')
   let view ?key ?style children = view children ?key ?style:(style >? polydict')
   let hview ?key ?style children = hview children ?key ?style:(style >? polydict')
