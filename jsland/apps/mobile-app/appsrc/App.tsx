@@ -25,7 +25,7 @@ import {
   ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
 
-import * as MelangeBridged from "./melsrc/bridge";
+import * as MelangeBridged from "../melsrc/bridge";
 
 type SectionProps = PropsWithChildren<{
   title: string;
