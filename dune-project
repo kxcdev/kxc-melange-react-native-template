@@ -14,5 +14,7 @@
   (ocaml (and (>= 5.1.0) (< 5.2)))
   (melange (and (>= 2.0.0) (< 2.1)))
 
-  ;; TODO: complete the list of dependencies
+  ;; library dependencies
+  ppxlib
+  reason-react
 ))

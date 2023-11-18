@@ -5,6 +5,8 @@ depends: [
   "dune" {>= "3.9"}
   "ocaml" {>= "5.1.0" & < "5.2"}
   "melange" {>= "2.0.0" & < "2.1"}
+  "ppxlib"
+  "reason-react"
   "odoc" {with-doc}
 ]
 build: [
