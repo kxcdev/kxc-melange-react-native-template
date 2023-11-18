@@ -1,4 +1,4 @@
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+const {getDefaultConfig} = require('@react-native/metro-config');
 const path = require("path");
 
 const workspaceRoot = path.resolve(__dirname, "../..");
