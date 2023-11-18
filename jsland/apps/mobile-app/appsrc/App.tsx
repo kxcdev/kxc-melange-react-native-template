@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import type { PropsWithChildren } from "react";
 import {
   Button,
@@ -67,8 +67,6 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const ocamlSection = MelangeBridged.OCamlSection;
-
   type ScreenSelection = "intro" | "accumulator";
   const [screenSelection, setScreenSelection] =
     useState<ScreenSelection>("intro");
@@ -78,7 +76,7 @@ function App(): JSX.Element {
       case "intro":
         return <IntroScreen />;
       case "accumulator":
-        return <AccumulatorExample />;
+        return <AccumulatorExample initialAccumulatorValue={33} />;
       default:
         return (
           <Text>
@@ -89,22 +87,23 @@ function App(): JSX.Element {
     }
   }
 
-  function AccumulatorExample() {
+  const selectedScreen = useMemo(SelectedScreen, [screenSelection]);
+
+  function AccumulatorExample(props: { initialAccumulatorValue?: number }) {
     return (
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
+      <View style={{ flexGrow: 1 }}>
         <Button
           title=" >> Introduction Screen << "
           onPress={() => setScreenSelection("intro")}
         />
-        <Text>Accumulator Example</Text>
-      </ScrollView>
+        <MelangeBridged.AccumulatorExample {...props} />
+      </View>
     );
   }
 
   function IntroScreen() {
+    const camlsec = MelangeBridged.OCamlSection;
+
     return (
       <>
         <ScrollView
@@ -125,8 +124,8 @@ function App(): JSX.Element {
               Edit <Text style={styles.highlight}>App.tsx</Text> to change this
               screen and then come back to see your edits.
             </Section>
-            <Section title={ocamlSection.sectionTitle}>
-              <ocamlSection.Body initialCounterValue={1} />
+            <Section title={camlsec.sectionTitle}>
+              <camlsec.Body initialCounterValue={1} />
             </Section>
             <Section title="See Your Changes">
               <ReloadInstructions />
@@ -145,12 +144,12 @@ function App(): JSX.Element {
   }
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[backgroundStyle, { flex: 1 }]}>
       <StatusBar
         barStyle={isDarkMode ? "light-content" : "dark-content"}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <SelectedScreen />
+      {selectedScreen}
     </SafeAreaView>
   );
 }

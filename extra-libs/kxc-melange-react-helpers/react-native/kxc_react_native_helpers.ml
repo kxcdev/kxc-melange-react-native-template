@@ -22,8 +22,8 @@ module ReactNative = struct
     = "Text" [@@mel.module "react-native"]
   [@@react.component]
 
-  let text_str ?style str =
-    text ?style &! Rd.str str
+  let text_str ?key ?style str =
+    text ?key ?style &! Rd.str str
 
   external button :
     title:string
@@ -34,8 +34,8 @@ module ReactNative = struct
   [@@react.component]
 
   let hview =
-    fun ?style children ->
-    view children ~style:(
+    fun ?key ?style children ->
+    view children ?key ~style:(
         polydict' ?base:style
           ["flexDirection", `string "row"])
 

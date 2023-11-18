@@ -19,6 +19,7 @@ module Js_val = struct
   type t
 
   type t' = ([
+    | `any of t
     | `null | `undefined
     | `string of string
     | `bytes of Bytes.t (** repr as js Uint8array *)
@@ -37,6 +38,7 @@ module Js_val = struct
   let rec detagged : t' -> t =
     let cast = Obj.magic in
     function
+    | `any x -> cast x
     | `float x -> cast x
     | `string x -> cast x
     | `bool x -> cast x
@@ -64,12 +66,15 @@ open struct
 end
 
 module Polydict : sig
-  type t = private js_val Js.Dict.t
   type key = Js.Dict.key
+
+  type t = private js_val Js.Dict.t
+  type field_list = (key * js_val') list
+
   val of_dict : _ Js.Dict.t -> t
   val to_dict : t -> js_val Js.Dict.t
   val of_list : ?base:t -> (key * js_val) list -> t
-  val of_list' : ?base:t -> (key * js_val') list -> t
+  val of_list' : ?base:t -> field_list -> t
   val to_list : t -> (key * js_val) list
   val get : key -> t -> js_val option
   val set : key -> js_val -> t -> unit
@@ -77,8 +82,11 @@ module Polydict : sig
   val with_fields' : (key * js_val') list -> t -> t
   val clone : t -> t
 end = struct
-  type t = js_val Js.Dict.t
   type key = Js.Dict.key
+
+  type t = js_val Js.Dict.t
+  type field_list = (key * js_val') list
+
   let of_dict : _ Js.Dict.t -> t = Obj.magic
   let to_dict : t -> js_val Js.Dict.t = Obj.magic
 
@@ -169,6 +177,8 @@ module Pervasives = struct
   let as_js : _ -> js_val = Js_val.as_js
 
   type polydict = Polydict.t
+  type polydict' = Polydict.field_list
+
   let polydict = Polydict.of_list
   let polydict' = Polydict.of_list'
 end

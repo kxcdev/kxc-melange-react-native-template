@@ -9,3 +9,7 @@ export const OCamlSection = {
     initialCounterValue?: number;
   }>,
 };
+
+export const AccumulatorExample: FunctionComponent<{
+  initialAccumulatorValue?: number;
+}> = entrypoint.Accumulator_example.body$p;
