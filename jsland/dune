@@ -1,3 +1,8 @@
 ;; file: <projroot>/jsland/dune
 
-(dirs .)
+(dirs . apps)
+
+(subdir apps
+ (dirs . mobile-app)
+ (subdir mobile-app
+   (dirs . melsrc)))

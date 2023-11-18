@@ -1,0 +1,11 @@
+;; file: <projroot>/jsland/apps/mobile-app/melsrc/dune
+
+(melange.emit
+ (target output)
+ (promote (until-clean))
+ (libraries reason-react kxclib.melange)
+ (preprocess
+  (pps melange.ppx
+       reason_react_ppx
+  ))
+ (module_systems es6))
