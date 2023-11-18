@@ -3,4 +3,4 @@
 (vendored_dirs vendors)
 (dirs :standard)
 
-(env (_ (flags :standard -warn-error -33-32)))
+(env (_ (flags :standard -warn-error -33-32-26-27)))
