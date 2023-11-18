@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist node_modules"
   },
   "devDependencies": {
     "tsup": "7.3.0",

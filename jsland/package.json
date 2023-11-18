@@ -7,6 +7,10 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "start-metro": "(cd apps/mobile-app && yarn start-metro)",
+    "start-android": "(cd apps/mobile-app && yarn android)",
+    "start-ios-device": "(cd apps/mobile-app && yarn ios-device)",
+    "start-ios-sim-iphone15": "(cd apps/mobile-app && yarn ios-sim-iphone15)",
     "lint": "turbo lint",
     "clean": "turbo clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"

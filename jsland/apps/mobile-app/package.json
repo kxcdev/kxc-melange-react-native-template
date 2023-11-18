@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios-device": "echo \"you need to open and build with Xcode: $(pwd)/ios/$(ls ios | grep xcworkspace)\"; exit 1",
+    "ios-sim-iphone15": "react-native run-ios --simulator='iPhone 15'",
     "lint": "eslint .",
-    "start": "react-native start",
+    "start-metro": "react-native start",
+    "dev": "dune build . -w",
+    "build": "dune build .",
+    "clean": "rm -rf melsrc/output node_modules",
     "test": "jest"
   },
   "dependencies": {
