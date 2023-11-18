@@ -125,7 +125,7 @@ function App(): JSX.Element {
               Edit <Text style={styles.highlight}>appsrc/App.tsx</Text> to
               change this screen and then come back to see your edits.
               {"\n\n"}
-              Code written in OCaml (Melange) code is imported at
+              Code written in OCaml (Melange) code is imported at{" "}
               <Text style={styles.highlight}>
                 melsrc/entrypoint.ml
               </Text> via <Text style={styles.highlight}>melsrc/bridge.ts</Text>
