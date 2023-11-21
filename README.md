@@ -92,6 +92,8 @@ opam --version # tested on: 2.2.0~alpha3~dev
 opam switch # tested on: compiler = ocaml-base-compiler.5.1.0,ocaml-options-vanilla.1
 # to confirm OCaml version, you can use
 ocamlc --version # tested on: 5.1.0
+# to confirm CocoaPods version, you can use
+pod --version # tested on: 1.14.2
 
 ## after dev setup, firstly do a warm-up build:
 dune build
@@ -103,6 +105,9 @@ dune build
 
 ## you can now build, install, and start the Android app with
 (cd jsland && yarn start-android)
+
+## to build iOS app, you can install Podfile with
+(cd jsland/apps/mobile-app/ios && pod install)
 ## you can also now build, install, and start the iOS app on a simulator with
 (cd jsland && yarn start-ios-sim-iphone15)
 ## or, to run the iOS app on a real device: open the Xcode project and proceed in Xcode
