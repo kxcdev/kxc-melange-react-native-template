@@ -21,6 +21,12 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: jsland/node_modules
+          key: v1-${{ runner.os }}-${{ hashFiles('jsland/yarn.lock') }}
+
       - name: Build and test
         uses: kxcdev/ocaml-general-gha@v3
         with:
