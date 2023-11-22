@@ -79,19 +79,21 @@ git submodule update --init
 
 ## you should follow the Dev Setup Notes to have a complete dev setup
 
-# to confirm Android SDK setup, you can use
-ls "$ANDROID_HOME/platforms" # tested on: android-33-ext4
-javac -version # tested on: javac 11.0.17
-# to confirm Xcode setup, you can use
-xcodebuild -showsdks # tested on: -sdk iphonesimulator17.0
 # to confirm Node.js and Yarn setup, you can use
 node --version # tested on: v18.17.1
 yarn --version # tested on: 1.22.19
 # to confirm OPAM setup, you can use
 opam --version # tested on: 2.2.0~alpha3~dev
 opam switch # tested on: compiler = ocaml-base-compiler.5.1.0,ocaml-options-vanilla.1
+# (Android only) to confirm Android SDK setup, you can use
+ls "$ANDROID_HOME/platforms" # tested on: android-33-ext4
+javac -version # tested on: javac 11.0.17
 # to confirm OCaml version, you can use
 ocamlc --version # tested on: 5.1.0
+# (iOS only) to confirm Xcode setup, you can use
+xcodebuild -showsdks # tested on: -sdk iphonesimulator17.0
+# (iOS only) to confirm CocoaPods version, you can use
+pod --version # tested on: 1.12.1
 
 ## after dev setup, firstly do a warm-up build:
 dune build
@@ -103,7 +105,10 @@ dune build
 
 ## you can now build, install, and start the Android app with
 (cd jsland && yarn start-android)
-## you can also now build, install, and start the iOS app on a simulator with
+
+## to build the iOS app, you need to first perform a CocoaPods install with
+(cd jsland/apps/mobile-app/ios && pod install)
+## you then should be able to build, install, and start the iOS app on a simulator with
 (cd jsland && yarn start-ios-sim-iphone15)
 ## or, to run the iOS app on a real device: open the Xcode project and proceed in Xcode
 ## more instructions are available with
