@@ -166,6 +166,18 @@ dune build
 ![Android Screen Shot - Intro Screen](./docs/images/sc-android-1.png "Intro Screen")
 ![Android Screen Shot - Accumulator Example](./docs/images/sc-android-2.png "Accumulator Example")
 
+## Feature
+
+### Github Actions
+
+Github Actions can be enabled by deleting the following statement in ``.github/workflows/common.yml``.
+
+```yml
+if: github.repository == 'kxcdev/kxc-melange-react-native-template'
+```
+
+This is an opt-in feature because it uses [kxcdev/ocaml-general-gha](https://github.com/kxcdev/ocaml-general-gha) instead of the official [setup-ocaml](https://github.com/ocaml/setup-ocaml).
+
 ## License
 Most code is licensed under Apache License, Version 2.0 (the "License")
 by the copyright holder(s) listed below.
