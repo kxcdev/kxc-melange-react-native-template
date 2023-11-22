@@ -34,6 +34,7 @@ jobs:
           ocaml-version: ${{ matrix.ocaml-version }}
           node-version: ${{ matrix.node-version }}
           setup-command: "opam install --locked . -y --deps-only --with-test"
+          # Since `dune` was needed to run `yarn build`, they are also called here.
           build-command:
             "(dune build && cd jsland && yarn install --frozen-lockfile && yarn build)"
           pr-report-test-result: ${{ matrix.ocaml-version == '5.1.0' }}
