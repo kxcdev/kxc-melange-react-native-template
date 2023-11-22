@@ -21,24 +21,12 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/${{ matrix.node-version }}
-          cache: yarn
-          cache-dependency-path: 'jsland/yarn.lock'
-
-      - name: Build and test OCaml
+      - name: Build and test
         uses: kxcdev/ocaml-general-gha@v3
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
           node-version: ${{ matrix.node-version }}
           setup-command: "opam install --locked . -y --deps-only --with-test"
-          build-command: "dune build"
+          build-command:
+            "dune build & cd jsland & yarn & yarn build"
           pr-report-test-result: ${{ matrix.ocaml-version == '5.1.0' }}
-      
-      - name: Build
-        run: |
-          cd jsland
-          yarn
-          yarn build
