@@ -1,0 +1,41 @@
+name: Common CI workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        ocaml-version:
+          - 5.1.0
+        node-version:
+          - hydrogen
+    if: github.repository == 'kxcdev/kxc-melange-react-native-template'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 2
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: jsland/node_modules
+          key: v1-${{ runner.os }}-${{ hashFiles('jsland/yarn.lock') }}
+
+      - name: Build and test
+        uses: kxcdev/ocaml-general-gha@v3
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+          node-version: ${{ matrix.node-version }}
+          setup-command: "opam install --locked . -y --deps-only --with-test && (cd jsland && yarn install --frozen-lockfile)"
+          # Since `dune` was needed to run `yarn build`, they are also called here.
+          build-command:
+            "(dune build && cd jsland && yarn build)"
+          pr-report-test-result: ${{ matrix.ocaml-version == '5.1.0' && matrix.node-version == 'hydrogen' }}
