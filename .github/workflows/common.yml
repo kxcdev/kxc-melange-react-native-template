@@ -13,7 +13,7 @@ jobs:
         ocaml-version:
           - 5.1.0
         node-version:
-          - iron
+          - hydrogen
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
