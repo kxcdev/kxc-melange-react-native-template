@@ -1,0 +1,44 @@
+name: Common CI workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        ocaml-version:
+          - 5.1.0
+        node-version:
+          - lts/iron
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+          cache-dependency-path: 'jsland/yarn.lock'
+
+      - name: Build and test OCaml
+        uses: kxcdev/ocaml-general-gha@v3
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+          node-version: ${{ matrix.node-version }}
+          setup-command: "opam install --locked . -y --deps-only --with-test"
+          build-command: "dune build"
+          pr-report-test-result: ${{ matrix.ocaml-version == '5.1.0' }}
+      
+      - name: Build
+        run: |
+          cd jsland
+          yarn
+          yarn build
