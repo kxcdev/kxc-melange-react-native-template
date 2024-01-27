@@ -85,7 +85,7 @@ android {
 
     namespace "com.melangerntemplate"
     defaultConfig {
-        applicationId "com.melangerntemplate"
+        applicationId "com.melangerntemplate_jsc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
