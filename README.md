@@ -178,6 +178,16 @@ if: github.repository == 'kxcdev/kxc-melange-react-native-template'
 
 This is an opt-in feature because it uses [kxcdev/ocaml-general-gha](https://github.com/kxcdev/ocaml-general-gha) instead of the official [setup-ocaml](https://github.com/ocaml/setup-ocaml).
 
+## Random Notes
+
+### JavaScriptCore vs Hermes Engine (on Android)
+
+There is a branch [jsc](https://github.com/kxcdev/kxc-melange-react-native-template/tree/jsc)
+that demonstrate how to disable Hermes Engine and use JavaScriptCore
+as the JavaScript engine on Android.
+Please note that this branch is not actively maintained
+so may not be up to date when compared to the main branch.
+
 ## License
 Most code is licensed under Apache License, Version 2.0 (the "License")
 by the copyright holder(s) listed below.
