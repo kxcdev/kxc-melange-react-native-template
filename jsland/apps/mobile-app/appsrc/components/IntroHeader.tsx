@@ -72,7 +72,28 @@ const HermesBadge: FunctionComponent = () => {
       </Text>
     </View>
   ) : (
-    <></>
+    <View style={styles.badge}>
+      <Text
+        style={[
+          styles.badgeText,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}
+      >
+        {`Engine: JavaScriptCore`}
+      </Text>
+      <Text
+        style={[
+          styles.badgeText,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}
+      >
+        {`OCaml / Melange version: ${ocaml_version}`}
+      </Text>
+    </View>
   );
 };
 
