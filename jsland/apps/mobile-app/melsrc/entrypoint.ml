@@ -60,7 +60,7 @@ module OCaml_section = struct
               logv "Reset tapped");
         ];
       line_break ();
-      text_str (sprintf "Counter = %d" counter);
+      text_str (sprintf {js|counter = %d|js} counter);
     ]
 end (* module OCaml_section *)
 
